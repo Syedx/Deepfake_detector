@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About - Deepfake Detector</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+    <!-- Particles Background -->
+    <div id="particles-js"></div>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="/">
+                <i class="fas fa-shield-alt me-2"></i>Deepfake Detector
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/how-it-works.html">How It Works</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="/about.html">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/faq.html">FAQ</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/contact.html">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Header Section -->
+    <section class="py-5">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8 text-center">
+                    <h1 class="mb-4 hero-title">About Our Project</h1>
+                    <p class="lead hero-subtitle">Meet the team behind the deepfake detection technology</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About & Team Section -->
+    <section class="py-5">
+        <div class="container">
+            <div class="row">
+                <!-- Project Overview -->
+                <div class="col-lg-5 mb-5 mb-lg-0">
+                    <div class="card h-100">
+                        <div class="card-body p-5">
+                            <h2 class="mb-4">Our Mission</h2>
+                            <p>The Deepfake Detector project was born out of a need to combat the rapidly growing threat of manipulated media in our digital world. As deepfake technology becomes more advanced and accessible, the potential for misinformation and fraud increases.</p>
+                            
+                            <p>Our mission is to develop and provide accessible, accurate, and transparent tools that help individuals and organizations verify the authenticity of digital media. We believe that by making detection technology widely available, we can help maintain trust in digital content.</p>
+                            
+                            <p>The project combines cutting-edge computer vision techniques, deep learning models, and metadata analysis to create a comprehensive detection system that analyzes visual content from multiple perspectives.</p>
+                            
+                            <div class="mt-5">
+                                <h3 class="mb-4">Technologies Used</h3>
+                                <div class="d-flex flex-wrap gap-2">
+                                    <span class="badge bg-primary p-2">PyTorch</span>
+                                    <span class="badge bg-primary p-2">ResNet50</span>
+                                    <span class="badge bg-primary p-2">Flask</span>
+                                    <span class="badge bg-primary p-2">Grad-CAM</span>
+                                    <span class="badge bg-primary p-2">EXIF Analysis</span>
+                                    <span class="badge bg-primary p-2">Computer Vision</span>
+                                    <span class="badge bg-primary p-2">Deep Learning</span>
+                                </div>
+                            </div>
+                            
+                            <div class="text-center mt-5">
+                                <img src="https://via.placeholder.com/300x100?text=Project+Logo" alt="Project Logo" class="img-fluid">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Team Members -->
+                <div class="col-lg-7">
+                    <h2 class="mb-4">Our Team</h2>
+                    <div class="row">
+                        <div class="col-md-6 mb-4">
+                            <div class="card h-100">
+                                <div class="card-body p-4 text-center">
+                                    <img src="https://via.placeholder.com/150?text=Alex" alt="Alex Chen" class="team-member-image mb-3">
+                                    <h4 class="team-member-name">Alex Chen</h4>
+                                    <p class="team-member-role">Project Lead & AI Researcher</p>
+                                    <p class="text-muted">Alex leads our research team with expertise in computer vision and deep learning. He has published multiple papers on neural network architectures for image classification.</p>
+                                    <div class="mt-3">
+                                        <a href="#" class="me-2 text-muted"><i class="fab fa-linkedin fa-lg"></i></a>
+                                        <a href="#" class="me-2 text-muted"><i class="fab fa-github fa-lg"></i></a>
+                                        <a href="#" class="text-muted"><i class="fas fa-globe fa-lg"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-6 mb-4">
+                            <div class="card h-100">
+                                <div class="card-body p-4 text-center">
+                                    <img src="https://via.placeholder.com/150?text=Maya" alt="Maya Rodriguez" class="team-member-image mb-3">
+                                    <h4 class="team-member-name">Maya Rodriguez</h4>
+                                    <p class="team-member-role">Computer Vision Specialist</p>
+                                    <p class="text-muted">Maya focuses on developing advanced facial recognition algorithms and manipulation detection techniques. Her work on Grad-CAM visualization is key to our system's transparency.</p>
+                                    <div class="mt-3">
+                                        <a href="#" class="me-2 text-muted"><i class="fab fa-linkedin fa-lg"></i></a>
+                                        <a href="#" class="me-2 text-muted"><i class="fab fa-github fa-lg"></i></a>
+                                        <a href="#" class="text-muted"><i class="fas fa-globe fa-lg"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-6 mb-4">
+                            <div class="card h-100">
+                                <div class="card-body p-4 text-center">
+                                    <img src="https://via.placeholder.com/150?text=Julian" alt="Julian Patel" class="team-member-image mb-3">
+                                    <h4 class="team-member-name">Julian Patel</h4>
+                                    <p class="team-member-role">Full-Stack Developer</p>
+                                    <p class="text-muted">Julian built our web application with a focus on performance and user experience. He ensures our complex AI technology is accessible through an intuitive interface.</p>
+                                    <div class="mt-3">
+                                        <a href="#" class="me-2 text-muted"><i class="fab fa-linkedin fa-lg"></i></a>
+                                        <a href="#" class="me-2 text-muted"><i class="fab fa-github fa-lg"></i></a>
+                                        <a href="#" class="text-muted"><i class="fas fa-globe fa-lg"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-6 mb-4">
+                            <div class="card h-100">
+                                <div class="card-body p-4 text-center">
+                                    <img src="https://via.placeholder.com/150?text=Olivia" alt="Olivia Kim" class="team-member-image mb-3">
+                                    <h4 class="team-member-name">Olivia Kim</h4>
+                                    <p class="team-member-role">Data Scientist</p>
+                                    <p class="text-muted">Olivia specializes in model training and evaluation. Her meticulous approach to dataset curation and benchmarking ensures our system's high accuracy and reliability.</p>
+                                    <div class="mt-3">
+                                        <a href="#" class="me-2 text-muted"><i class="fab fa-linkedin fa-lg"></i></a>
+                                        <a href="#" class="me-2 text-muted"><i class="fab fa-github fa-lg"></i></a>
+                                        <a href="#" class="text-muted"><i class="fas fa-globe fa-lg"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Partners & Recognition -->
+    <section class="py-5">
+        <div class="container">
+            <div class="row mb-5">
+                <div class="col-lg-8 offset-lg-2 text-center">
+                    <h2>Partners & Recognition</h2>
+                    <p class="text-muted">Our work is supported by leading organizations in technology and media integrity</p>
+                </div>
+            </div>
+            
+            <div class="row mb-5 justify-content-center">
+                <div class="col-4 col-md-2 text-center mb-4">
+                    <img src="https://via.placeholder.com/150x80?text=Partner+1" alt="Partner Logo" class="img-fluid">
+                </div>
+                <div class="col-4 col-md-2 text-center mb-4">
+                    <img src="https://via.placeholder.com/150x80?text=Partner+2" alt="Partner Logo" class="img-fluid">
+                </div>
+                <div class="col-4 col-md-2 text-center mb-4">
+                    <img src="https://via.placeholder.com/150x80?text=Partner+3" alt="Partner Logo" class="img-fluid">
+                </div>
+                <div class="col-4 col-md-2 text-center mb-4">
+                    <img src="https://via.placeholder.com/150x80?text=Partner+4" alt="Partner Logo" class="img-fluid">
+                </div>
+                <div class="col-4 col-md-2 text-center mb-4">
+                    <img src="https://via.placeholder.com/150x80?text=Partner+5" alt="Partner Logo" class="img-fluid">
+                </div>
+            </div>
+            
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="card p-4">
+                        <div class="card-body text-center">
+                            <h4 class="mb-4">Featured In</h4>
+                            <div class="row justify-content-center">
+                                <div class="col-4 col-md-2 mb-3">
+                                    <img src="https://via.placeholder.com/100x40?text=Media+1" alt="Media Logo" class="img-fluid">
+                                </div>
+                                <div class="col-4 col-md-2 mb-3">
+                                    <img src="https://via.placeholder.com/100x40?text=Media+2" alt="Media Logo" class="img-fluid">
+                                </div>
+                                <div class="col-4 col-md-2 mb-3">
+                                    <img src="https://via.placeholder.com/100x40?text=Media+3" alt="Media Logo" class="img-fluid">
+                                </div>
+                                <div class="col-4 col-md-2 mb-3">
+                                    <img src="https://via.placeholder.com/100x40?text=Media+4" alt="Media Logo" class="img-fluid">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- CTA Section -->
+    <section class="py-5">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8 text-center">
+                    <h2 class="mb-4">Join Our Mission</h2>
+                    <p class="lead text-muted mb-5">Help us combat misinformation and protect media integrity in the digital age.</p>
+                    <a href="/contact.html" class="btn btn-primary btn-lg me-3">
+                        <i class="fas fa-envelope me-2"></i>Contact Us
+                    </a>
+                    <a href="/" class="btn btn-outline me-3">
+                        <i class="fas fa-upload me-2"></i>Try The Tool
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <h5 class="footer-title">Deepfake Detector</h5>
+                    <p>Advanced AI-powered deepfake detection for images and videos with industry-leading accuracy.</p>
+                </div>
+                <div class="col-md-2 mb-4">
+                    <h5 class="footer-title">Links</h5>
+                    <a href="/" class="footer-link">Home</a>
+                    <a href="/how-it-works.html" class="footer-link">How It Works</a>
+                    <a href="/about.html" class="footer-link">About</a>
+                    <a href="/faq.html" class="footer-link">FAQ</a>
+                </div>
+                <div class="col-md-3 mb-4">
+                    <h5 class="footer-title">Resources</h5>
+                    <a href="#" class="footer-link">Documentation</a>
+                    <a href="#" class="footer-link">Research Paper</a>
+                    <a href="#" class="footer-link">API Reference</a>
+                </div>
+                <div class="col-md-3 mb-4">
+                    <h5 class="footer-title">Contact</h5>
+                    <a href="/contact.html" class="footer-link">Contact Us</a>
+                    <a href="#" class="footer-link">Privacy Policy</a>
+                    <a href="#" class="footer-link">Terms of Service</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Deepfake Detector and Verification System. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Particles.js -->
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <!-- Custom JS -->
+    <script src="/static/js/main.js"></script>
+</body>
+</html> 

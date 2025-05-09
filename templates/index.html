@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deepfake Detector and Verification System</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <!-- Particles Background -->
+    <div id="particles-js"></div>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="/">
+                <i class="fas fa-shield-alt me-2"></i>Deepfake Detector
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="/">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/how-it-works.html">How It Works</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/about.html">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/faq.html">FAQ</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/contact.html">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container">
+        <!-- Model Not Found Warning -->
+        {% if not has_model %}
+        <div class="row my-4">
+            <div class="col-lg-8 offset-lg-2">
+                <div class="alert alert-warning">
+                    <h4 class="alert-heading"><i class="fas fa-exclamation-triangle me-2"></i>Model Not Found!</h4>
+                    <p>The deepfake detector model file was not found. You need to either:</p>
+                    <ul>
+                        <li>Train your own model by running: <code>python deepfake_detector.py</code></li>
+                        <li>Place a pre-trained model file (<code>deepfake_detector_model.pth</code>) in the project root directory</li>
+                    </ul>
+                    <p>Without the model file, the verification system will not work correctly.</p>
+                </div>
+            </div>
+        </div>
+        {% endif %}
+
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="row">
+                <div class="col-lg-8 offset-lg-2 text-center">
+                    <h1 class="hero-title">Detect Deepfakes with Precision</h1>
+                    <p class="hero-subtitle">Our advanced AI system analyzes images and videos to detect manipulated media with industry-leading accuracy.</p>
+                    <a href="#upload-section" class="btn btn-primary btn-lg">
+                        <i class="fas fa-upload me-2"></i>Upload Media
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Progress Steps -->
+        <div class="row mb-5">
+            <div class="col-lg-10 offset-lg-1">
+                <div class="progress-steps">
+                    <div class="step active" id="step-upload">
+                        <div class="step-icon">
+                            <i class="fas fa-upload"></i>
+                        </div>
+                        <div class="step-text">Upload</div>
+                    </div>
+                    <div class="step" id="step-analyze">
+                        <div class="step-icon">
+                            <i class="fas fa-cogs"></i>
+                        </div>
+                        <div class="step-text">Analyze</div>
+                    </div>
+                    <div class="step" id="step-results">
+                        <div class="step-icon">
+                            <i class="fas fa-chart-bar"></i>
+                        </div>
+                        <div class="step-text">Results</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Upload Section -->
+        <section id="upload-section" class="mb-5">
+            <div class="row">
+                <div class="col-lg-8 offset-lg-2">
+                    <div class="card">
+                        <div class="card-header">
+                            <h4 class="mb-0"><i class="fas fa-file-upload me-2"></i>Upload Media for Verification</h4>
+                        </div>
+                        <div class="card-body">
+                            <ul class="nav nav-tabs" id="myTab" role="tablist">
+                                <li class="nav-item" role="presentation">
+                                    <button class="nav-link active" id="image-tab" data-bs-toggle="tab" data-bs-target="#image-tab-pane" type="button" role="tab" aria-controls="image-tab-pane" aria-selected="true">
+                                        <i class="fas fa-image me-2"></i>Image
+                                    </button>
+                                </li>
+                                <li class="nav-item" role="presentation">
+                                    <button class="nav-link" id="video-tab" data-bs-toggle="tab" data-bs-target="#video-tab-pane" type="button" role="tab" aria-controls="video-tab-pane" aria-selected="false">
+                                        <i class="fas fa-video me-2"></i>Video
+                                    </button>
+                                </li>
+                            </ul>
+                            <div class="tab-content mt-4" id="myTabContent">
+                                <!-- Image Upload Tab -->
+                                <div class="tab-pane fade show active" id="image-tab-pane" role="tabpanel" aria-labelledby="image-tab" tabindex="0">
+                                    <form id="image-upload-form" enctype="multipart/form-data">
+                                        <div class="upload-area" id="image-upload-area">
+                                            <div class="upload-icon">
+                                                <i class="fas fa-image"></i>
+                                            </div>
+                                            <h5 class="upload-text">Drag & drop an image here</h5>
+                                            <p class="upload-subtext">or</p>
+                                            <input type="file" class="form-control d-none" id="image-file" name="file" accept="image/jpeg,image/png,image/jpg" required>
+                                            <input type="hidden" name="type" value="image">
+                                            <button type="button" class="btn btn-outline" id="image-browse-btn">Browse Files</button>
+                                        </div>
+                                        <div class="text-center">
+                                            <button type="submit" class="btn btn-primary" id="image-upload-btn" {% if not has_model %}disabled{% endif %}>
+                                                <i class="fas fa-upload me-2"></i>Verify Image
+                                            </button>
+                                        </div>
+                                    </form>
+                                </div>
+                                
+                                <!-- Video Upload Tab -->
+                                <div class="tab-pane fade" id="video-tab-pane" role="tabpanel" aria-labelledby="video-tab" tabindex="0">
+                                    <form id="video-upload-form" enctype="multipart/form-data">
+                                        <div class="upload-area" id="video-upload-area">
+                                            <div class="upload-icon">
+                                                <i class="fas fa-video"></i>
+                                            </div>
+                                            <h5 class="upload-text">Drag & drop a video here</h5>
+                                            <p class="upload-subtext">or</p>
+                                            <input type="file" class="form-control d-none" id="video-file" name="file" accept="video/mp4,video/avi,video/mov" required>
+                                            <input type="hidden" name="type" value="video">
+                                            <button type="button" class="btn btn-outline" id="video-browse-btn">Browse Files</button>
+                                        </div>
+                                        <div class="mb-4 mt-4">
+                                            <label for="sample-rate" class="form-label">Analysis Precision:</label>
+                                            <select class="form-select" id="sample-rate" name="sample_rate">
+                                                <option value="5">High (analyzes more frames, slower)</option>
+                                                <option value="10" selected>Balanced (recommended)</option>
+                                                <option value="20">Fast (analyzes fewer frames, quicker)</option>
+                                            </select>
+                                        </div>
+                                        <div class="text-center">
+                                            <button type="submit" class="btn btn-primary" id="video-upload-btn" {% if not has_model %}disabled{% endif %}>
+                                                <i class="fas fa-upload me-2"></i>Verify Video
+                                            </button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Loading Section -->
+        <section id="loading-container" class="d-none mb-5">
+            <div class="row">
+                <div class="col-lg-6 offset-lg-3">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="loading-container">
+                                <div class="loading-spinner"></div>
+                                <p class="loading-text" id="loading-message">Processing your media. This may take a few moments...</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Results Section -->
+        <section id="results-container" class="d-none mb-5">
+            <div class="row">
+                <div class="col-lg-10 offset-lg-1">
+                    <div class="card">
+                        <div class="card-header">
+                            <h4 class="mb-0"><i class="fas fa-chart-pie me-2"></i>Verification Results</h4>
+                        </div>
+                        <div class="card-body">
+                            <div class="row">
+                                <!-- Result summary -->
+                                <div class="col-md-4">
+                                    <div class="result-card" id="result-summary-card">
+                                        <div id="result-badge" class="result-badge"></div>
+                                        <h5>Confidence Level</h5>
+                                        <div class="confidence-bar-container">
+                                            <div id="confidence-bar" class="confidence-bar" style="width: 0%;"></div>
+                                        </div>
+                                        <p class="confidence-text"><span id="confidence-text">0</span>% confident</p>
+                                    </div>
+                                    
+                                    <!-- Video specific stats -->
+                                    <div id="video-stats" class="d-none">
+                                        <h5 class="mb-3">Analysis Statistics</h5>
+                                        <div class="table-responsive">
+                                            <table class="table table-striped">
+                                                <tbody>
+                                                    <tr>
+                                                        <td>Total Frames Analyzed:</td>
+                                                        <td id="total-frames">0</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Frames Detected as Real:</td>
+                                                        <td id="real-frames">0</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Frames Detected as Fake:</td>
+                                                        <td id="fake-frames">0</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                    
+                                    <!-- Decision explanation -->
+                                    <div id="explanation-container" class="explanation-container d-none">
+                                        <h5 class="explanation-title">Decision Reasoning</h5>
+                                        <ul id="explanation-list" class="explanation-list"></ul>
+                                    </div>
+                                </div>
+                                
+                                <!-- Media display -->
+                                <div class="col-md-8">
+                                    <div id="image-result" class="text-center">
+                                        <img id="result-image" src="" alt="Verification Result" class="img-fluid rounded">
+                                    </div>
+                                    <div id="video-result" class="text-center d-none">
+                                        <video id="result-video" controls class="img-fluid rounded">
+                                            Your browser does not support the video tag.
+                                        </video>
+                                    </div>
+                                    
+                                    <!-- Heatmap visualization -->
+                                    <div id="heatmap-container" class="heatmap-container mt-4 d-none">
+                                        <h5 class="mb-3">Detection Heatmap</h5>
+                                        <div class="text-center">
+                                            <img id="heatmap-image" src="" alt="Detection Heatmap" class="img-fluid rounded">
+                                            <p class="heatmap-caption">Highlighted areas show regions that influenced the model's decision the most.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Metadata section -->
+                            <div class="row mt-4">
+                                <div class="col-12">
+                                    <div class="accordion" id="metadataAccordion">
+                                        <div class="accordion-item">
+                                            <h2 class="accordion-header" id="metadataHeading">
+                                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#metadataCollapse" aria-expanded="false" aria-controls="metadataCollapse">
+                                                    <i class="fas fa-info-circle me-2"></i>Image Metadata
+                                                </button>
+                                            </h2>
+                                            <div id="metadataCollapse" class="accordion-collapse collapse" aria-labelledby="metadataHeading" data-bs-parent="#metadataAccordion">
+                                                <div class="accordion-body">
+                                                    <div id="metadata-container">
+                                                        <div id="basic-info-section" class="mb-4">
+                                                            <h5 style="color: white;">Basic Information</h5>
+                                                            <div class="table-responsive">
+                                                                <table class="table table-striped table-sm">
+                                                                    <tbody id="basic-info-tbody"></tbody>
+                                                                </table>
+                                                            </div>
+                                                        </div>
+                                                        <div id="exif-info-section">
+                                                            <h5 style="color: white;">EXIF Data</h5>
+                                                            <div id="exif-sections"></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Feature Highlights -->
+        <section class="features">
+            <div class="container">
+                <div class="row text-center mb-5">
+                    <div class="col-12">
+                        <h2>Advanced Detection Features</h2>
+                        <p class="text-muted">Our system provides comprehensive analysis beyond simple detection</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4 mb-4">
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i class="fas fa-file-alt"></i>
+                            </div>
+                            <h4 class="feature-title">Metadata Analysis</h4>
+                            <p class="feature-text">Extract and analyze embedded EXIF data to identify traces of image manipulation or inconsistencies.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-4">
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i class="fas fa-brain"></i>
+                            </div>
+                            <h4 class="feature-title">Decision Explanation</h4>
+                            <p class="feature-text">Understand why our AI made its determination with detailed reasoning and confidence metrics.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-4">
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i class="fas fa-map"></i>
+                            </div>
+                            <h4 class="feature-title">Visual Heatmaps</h4>
+                            <p class="feature-text">See exactly which parts of the image influenced the detection using advanced visualization technology.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <h5 class="footer-title">Deepfake Detector</h5>
+                    <p>Advanced AI-powered deepfake detection for images and videos with industry-leading accuracy.</p>
+                </div>
+                <div class="col-md-2 mb-4">
+                    <h5 class="footer-title">Links</h5>
+                    <a href="/" class="footer-link">Home</a>
+                    <a href="/how-it-works.html" class="footer-link">How It Works</a>
+                    <a href="/about.html" class="footer-link">About</a>
+                    <a href="/faq.html" class="footer-link">FAQ</a>
+                </div>
+                <div class="col-md-3 mb-4">
+                    <h5 class="footer-title">Resources</h5>
+                    <a href="#" class="footer-link">Documentation</a>
+                    <a href="#" class="footer-link">Research Paper</a>
+                    <a href="#" class="footer-link">API Reference</a>
+                </div>
+                <div class="col-md-3 mb-4">
+                    <h5 class="footer-title">Contact</h5>
+                    <a href="/contact.html" class="footer-link">Contact Us</a>
+                    <a href="#" class="footer-link">Privacy Policy</a>
+                    <a href="#" class="footer-link">Terms of Service</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Deepfake Detector and Verification System. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Particles.js -->
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <!-- Custom JS -->
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html> 

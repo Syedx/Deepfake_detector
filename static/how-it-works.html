@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How It Works - Deepfake Detector</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/static/css/style.css">
+    <style>
+        /* Additional page-specific overrides */
+        .display-1.text-primary {
+            color: var(--primary-color) !important;
+        }
+        h1, h2, h3, h4, h5, h6 {
+            color: var(--gray-900);
+        }
+        p {
+            color: var(--gray-700);
+        }
+        .card {
+            background-color: var(--gray-100);
+        }
+    </style>
+</head>
+<body>
+    <!-- Particles Background -->
+    <div id="particles-js"></div>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="/">
+                <i class="fas fa-shield-alt me-2"></i>Deepfake Detector
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="/how-it-works.html">How It Works</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/about.html">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/faq.html">FAQ</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/contact.html">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Header Section -->
+    <section class="py-5">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8 text-center">
+                    <h1 class="mb-4 hero-title">How Our Deepfake Detection Works</h1>
+                    <p class="lead hero-subtitle">Understanding the technology behind our powerful AI-driven deepfake detection system</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Process Steps -->
+    <section class="py-5">
+        <div class="container">
+            <div class="row mb-5">
+                <div class="col-lg-10 offset-lg-1">
+                    <div class="card">
+                        <div class="card-body p-5">
+                            <div class="row mb-5">
+                                <div class="col-md-6 mb-4 mb-md-0">
+                                    <div class="d-flex align-items-center mb-3">
+                                        <div class="step-icon active me-3">
+                                            <span>1</span>
+                                        </div>
+                                        <h3 class="mb-0">Upload</h3>
+                                    </div>
+                                    <p class="text-muted">Begin by uploading your image or video file to our secure detection platform. We accept most common formats including JPG, PNG, and MP4.</p>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="text-center">
+                                        <i class="fas fa-cloud-upload-alt fa-5x text-primary"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="row mb-5">
+                                <div class="col-md-6 order-md-2 mb-4 mb-md-0">
+                                    <div class="d-flex align-items-center mb-3">
+                                        <div class="step-icon active me-3">
+                                            <span>2</span>
+                                        </div>
+                                        <h3 class="mb-0">Analysis</h3>
+                                    </div>
+                                    <p class="text-muted">Our advanced AI model, built on a ResNet50 architecture, analyzes your media for telltale signs of manipulation that are invisible to the human eye.</p>
+                                </div>
+                                <div class="col-md-6 order-md-1">
+                                    <div class="text-center">
+                                        <i class="fas fa-brain fa-5x text-primary"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="row">
+                                <div class="col-md-6 mb-4 mb-md-0">
+                                    <div class="d-flex align-items-center mb-3">
+                                        <div class="step-icon active me-3">
+                                            <span>3</span>
+                                        </div>
+                                        <h3 class="mb-0">Results</h3>
+                                    </div>
+                                    <p class="text-muted">Receive a comprehensive analysis with a real/fake classification, confidence score, visual heatmap, and detailed metadata evaluation.</p>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="text-center">
+                                        <i class="fas fa-chart-pie fa-5x text-primary"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Technology Section -->
+    <section class="py-5">
+        <div class="container">
+            <div class="row mb-5">
+                <div class="col-lg-8 offset-lg-2 text-center">
+                    <h2>Our Technology</h2>
+                    <p class="text-muted">Leveraging cutting-edge deep learning to detect manipulated media</p>
+                </div>
+            </div>
+            
+            <div class="row">
+                <div class="col-lg-10 offset-lg-1">
+                    <div class="card mb-4">
+                        <div class="card-body p-5">
+                            <div class="row align-items-center">
+                                <div class="col-md-7">
+                                    <h3>CNN Architecture</h3>
+                                    <p>Our system uses a Convolutional Neural Network (CNN) based on ResNet50 architecture, trained on thousands of authentic and manipulated images to recognize subtle patterns of manipulation.</p>
+                                    <p>The deep learning model has been fine-tuned specifically to detect GAN-generated faces, face swaps, and other common deepfake techniques with high accuracy.</p>
+                                </div>
+                                <div class="col-md-5">
+                                    <img src="https://via.placeholder.com/500x300?text=CNN+Architecture" alt="CNN Architecture" class="img-fluid rounded shadow">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="card mb-4">
+                        <div class="card-body p-5">
+                            <div class="row align-items-center">
+                                <div class="col-md-5">
+                                    <img src="https://via.placeholder.com/500x300?text=Metadata+Analysis" alt="Metadata Analysis" class="img-fluid rounded shadow">
+                                </div>
+                                <div class="col-md-7">
+                                    <h3>Metadata Analysis</h3>
+                                    <p>Beyond visual analysis, our system extracts and examines EXIF data from images, looking for inconsistencies or signs of editing that might indicate manipulation.</p>
+                                    <p>This metadata analysis provides additional context to the AI's visual assessment, creating a more comprehensive evaluation.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <div class="card-body p-5">
+                            <div class="row align-items-center">
+                                <div class="col-md-7">
+                                    <h3>Grad-CAM Visualization</h3>
+                                    <p>Our system generates heatmaps using Gradient-weighted Class Activation Mapping (Grad-CAM) technology to highlight the regions of the image that most influenced the detection decision.</p>
+                                    <p>This transparency helps users understand why an image was classified as real or fake, providing insight into the AI's decision-making process.</p>
+                                </div>
+                                <div class="col-md-5">
+                                    <img src="https://via.placeholder.com/500x300?text=Grad-CAM+Visualization" alt="Grad-CAM Visualization" class="img-fluid rounded shadow">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Performance Section -->
+    <section class="py-5">
+        <div class="container">
+            <div class="row mb-5">
+                <div class="col-lg-8 offset-lg-2 text-center">
+                    <h2>Performance Metrics</h2>
+                    <p class="text-muted">Our system achieves industry-leading accuracy in deepfake detection</p>
+                </div>
+            </div>
+            
+            <div class="row justify-content-center">
+                <div class="col-md-4 mb-4">
+                    <div class="card text-center h-100">
+                        <div class="card-body p-4">
+                            <div class="display-1 text-primary mb-3">95%</div>
+                            <h3>Accuracy</h3>
+                            <p class="text-muted">Overall detection accuracy on benchmark datasets</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-4 mb-4">
+                    <div class="card text-center h-100">
+                        <div class="card-body p-4">
+                            <div class="display-1 text-primary mb-3">94%</div>
+                            <h3>Precision</h3>
+                            <p class="text-muted">Precision in correctly identifying fake media</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-4 mb-4">
+                    <div class="card text-center h-100">
+                        <div class="card-body p-4">
+                            <div class="display-1 text-primary mb-3">96%</div>
+                            <h3>Recall</h3>
+                            <p class="text-muted">Success rate in finding all manipulated media</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-5">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8 text-center">
+                    <h2 class="mb-4">Ready to Verify Your Media?</h2>
+                    <p class="lead text-muted mb-5">Try our deepfake detection system now to verify the authenticity of your images and videos.</p>
+                    <a href="/" class="btn btn-primary btn-lg">
+                        <i class="fas fa-upload me-2"></i>Upload Media Now
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <h5 class="footer-title">Deepfake Detector</h5>
+                    <p>Advanced AI-powered deepfake detection for images and videos with industry-leading accuracy.</p>
+                </div>
+                <div class="col-md-2 mb-4">
+                    <h5 class="footer-title">Links</h5>
+                    <a href="/" class="footer-link">Home</a>
+                    <a href="/how-it-works.html" class="footer-link">How It Works</a>
+                    <a href="/about.html" class="footer-link">About</a>
+                    <a href="/faq.html" class="footer-link">FAQ</a>
+                </div>
+                <div class="col-md-3 mb-4">
+                    <h5 class="footer-title">Resources</h5>
+                    <a href="#" class="footer-link">Documentation</a>
+                    <a href="#" class="footer-link">Research Paper</a>
+                    <a href="#" class="footer-link">API Reference</a>
+                </div>
+                <div class="col-md-3 mb-4">
+                    <h5 class="footer-title">Contact</h5>
+                    <a href="/contact.html" class="footer-link">Contact Us</a>
+                    <a href="#" class="footer-link">Privacy Policy</a>
+                    <a href="#" class="footer-link">Terms of Service</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Deepfake Detector and Verification System. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Particles.js -->
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <!-- Custom JS -->
+    <script src="/static/js/main.js"></script>
+</body>
+</html> 
